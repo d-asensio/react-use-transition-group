@@ -1,0 +1,56 @@
+{
+  "name": "react-use-transition-group",
+  "version": "0.0.1",
+  "description": "A react hook and HOC to manage transitions easily.",
+  "author": "David Asensio Cañas <david.asensio@icloud.com>",
+  "license": "MIT",
+  "files": [
+    "./build"
+  ],
+  "main": "./src/index.js",
+  "module": "./build/esm/index.js",
+  "types": "./build/lib/index.d.ts",
+  "typings": "./build/lib/index.d.ts",
+  "scripts": {
+    "build:cjs": "tsc",
+    "build:es": "tsc -m esNext --outDir ./build/esm",
+    "build": "yarn build:cjs && yarn build:es",
+    "clean": "rimraf build storybook-static",
+    "lint": "tslint 'src/**/*.{ts,tsx}' -t verbose",
+    "lint:fix": "yarn lint --fix",
+    "lint:types": "tsc --noEmit",
+    "start": "yarn storybook",
+    "storybook": "start-storybook -p 6009",
+    "storybook:build": "build-storybook"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^5.1.11",
+    "@storybook/addon-links": "^5.1.11",
+    "@storybook/addons": "^5.1.11",
+    "@storybook/react": "^5.1.11",
+    "@types/react": "^16.9.2",
+    "@types/storybook__react": "^4.0.2",
+    "babel-loader": "^8.0.6",
+    "prettier": "^1.18.2",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "rimraf": "^3.0.0",
+    "tslint": "^5.19.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.5.3",
+    "webpack": "^4.39.2"
+  },
+  "dependencies": {
+    "react-use": "^11.3.2"
+  }
+}

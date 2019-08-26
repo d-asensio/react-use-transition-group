@@ -1,0 +1,9 @@
+# Modules
+node_modules/
+
+# Log files
+*.log
+
+# Build artifacts
+build/
+storybook-static/
