@@ -7,3 +7,9 @@ node_modules/
 # Build artifacts
 build/
 storybook-static/
+
+# IDE Setting
+.vscode
+
+# System files
+.DS_Store
