@@ -8,6 +8,9 @@ node_modules/
 build/
 storybook-static/
 
+# Test reports
+coverage/
+
 # IDE Setting
 .vscode
 
