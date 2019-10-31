@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export function useIsMounting() {
+export function useIsMounting(): boolean {
   const isInitialMount = useRef(true);
 
   useEffect(() => {

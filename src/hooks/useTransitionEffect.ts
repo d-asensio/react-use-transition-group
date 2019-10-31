@@ -5,13 +5,14 @@ export function useTransitionEffect(
   effect: () => void,
   triggerState: string | string[],
   currentState: string,
-  onUpdateOnly: boolean = false
-) {
+  onUpdateOnly = false
+): void {
   const isMounting = useIsMounting();
 
   useEffect(() => {
     if (!onUpdateOnly || !isMounting) {
-      const triggerStates = triggerState instanceof Array ? triggerState : [triggerState];
+      const triggerStates =
+        triggerState instanceof Array ? triggerState : [triggerState];
 
       if (triggerStates.includes(currentState)) {
         return effect();

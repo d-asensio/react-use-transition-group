@@ -15,9 +15,12 @@ describe('useTransition', () => {
   });
 
   it('Plays enter sequence', async () => {
-    const { result, rerender, waitForNextUpdate } = renderHook(({ inProp }) => useTransition(inProp), {
-      initialProps: { inProp: false },
-    });
+    const { result, rerender, waitForNextUpdate } = renderHook(
+      ({ inProp }) => useTransition(inProp),
+      {
+        initialProps: { inProp: false },
+      }
+    );
 
     expect(result.current.state).toBe('exited');
 
@@ -56,9 +59,12 @@ describe('useTransition', () => {
   });
 
   it('Plays exit sequence', async () => {
-    const { result, rerender, waitForNextUpdate } = renderHook(({ inProp }) => useTransition(inProp), {
-      initialProps: { inProp: true },
-    });
+    const { result, rerender, waitForNextUpdate } = renderHook(
+      ({ inProp }) => useTransition(inProp),
+      {
+        initialProps: { inProp: true },
+      }
+    );
 
     expect(result.current.state).toBe('entered');
 
@@ -96,7 +102,7 @@ describe('useTransition', () => {
     expect(result.current.state).toBe('entered');
   });
 
-  it('Keeps isMountTransition to `true` during the first transition', async () => {
+  it('Keeps isMountTransition to `true` during first transition', async () => {
     const { result, waitForNextUpdate, rerender } = renderHook(
       ({ inProp }) => {
         return useTransition(inProp, {

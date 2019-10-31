@@ -17,10 +17,16 @@ describe('useStateSequence', () => {
   });
 
   it('Plays a state sequence with non-zero timeouts', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useStateSequence('init_state'));
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useStateSequence('init_state')
+    );
 
     act(() => {
-      result.current.playSequence([['first_state', 100], ['second_state', 100], ['third_state', 100]]);
+      result.current.playSequence([
+        ['first_state', 100],
+        ['second_state', 100],
+        ['third_state', 100],
+      ]);
     });
 
     await waitForNextUpdate();
@@ -34,10 +40,16 @@ describe('useStateSequence', () => {
   });
 
   it('Plays a state sequence with zeroed timeouts', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useStateSequence('init_state'));
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useStateSequence('init_state')
+    );
 
     act(() => {
-      result.current.playSequence([['first_state', 0], ['second_state', 0], ['third_state', 0]]);
+      result.current.playSequence([
+        ['first_state', 0],
+        ['second_state', 0],
+        ['third_state', 0],
+      ]);
     });
 
     await waitForNextUpdate();
@@ -51,14 +63,16 @@ describe('useStateSequence', () => {
   });
 
   it('Enqueue concurrent sequences', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useStateSequence('init_state'));
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useStateSequence('init_state')
+    );
 
     act(() => {
       result.current.playSequence([['first_state', 0], ['second_state', 0]]);
       result.current.playSequence([['third_state', 0], ['fourth_state', 0]]);
     });
 
-    (async () => {
+    (async (): Promise<void> => {
       await waitForNextUpdate();
       expect(result.current.state).toBe('first_state');
 

@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  // Override excluded files, we want to lint stories and tests.
+  "exclude": []
+}

@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { useStateSequence } from '..';
 
-function Demo() {
+function Demo(): ReactElement {
   const { state, playSequence } = useStateSequence('initial state');
 
-  const handlePlayButtonClick = () => {
+  const handlePlayButtonClick = (): void => {
     playSequence([['one', 500], ['two', 500], ['three', 500]]);
   };
 

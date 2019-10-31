@@ -44,7 +44,10 @@ function getSafeOptions(options: TransitionOptions): TransitionSafeOptions {
     ...options,
   };
 
-  const mountTimings = options && options.mountTimings ? options.mountTimings : mergedOptions.timings;
+  const mountTimings =
+    options && options.mountTimings
+      ? options.mountTimings
+      : mergedOptions.timings;
 
   return {
     ...mergedOptions,
@@ -52,10 +55,18 @@ function getSafeOptions(options: TransitionOptions): TransitionSafeOptions {
   };
 }
 
-export function useTransition(inProp: boolean, options: TransitionOptions = {}): TransitionHookReturnValue {
-  const { queueTransitions, transitionOnMount, timings, mountTimings } = getSafeOptions(options);
+export function useTransition(
+  inProp: boolean,
+  options: TransitionOptions = {}
+): TransitionHookReturnValue {
+  const {
+    queueTransitions,
+    transitionOnMount,
+    timings,
+    mountTimings,
+  } = getSafeOptions(options);
 
-  const getInitialState = () => {
+  const getInitialState = (): string => {
     if (inProp) {
       return transitionOnMount ? 'exited' : 'entered';
     } else {
@@ -69,7 +80,9 @@ export function useTransition(inProp: boolean, options: TransitionOptions = {}):
 
   const { state, playSequence } = useStateSequence(getInitialState);
 
-  const transitionTimings = isMountTransitionRef.current ? mountTimings : timings;
+  const transitionTimings = isMountTransitionRef.current
+    ? mountTimings
+    : timings;
   const { enter: enterDelays, exit: exitDelays } = transitionTimings;
 
   const [enteringDelay, enteredDelay] = enterDelays;
@@ -77,13 +90,19 @@ export function useTransition(inProp: boolean, options: TransitionOptions = {}):
 
   useEffect(() => {
     if (!isMounting || transitionOnMount) {
-      (async () => {
+      (async (): Promise<void> => {
         isPlayingRef.current = true;
 
         if (inProp) {
-          await playSequence([['entering', enteringDelay], ['entered', enteredDelay]], !queueTransitions);
+          await playSequence(
+            [['entering', enteringDelay], ['entered', enteredDelay]],
+            !queueTransitions
+          );
         } else {
-          await playSequence([['exiting', exitingDelay], ['exited', exitedDelay]], !queueTransitions);
+          await playSequence(
+            [['exiting', exitingDelay], ['exited', exitedDelay]],
+            !queueTransitions
+          );
         }
 
         isMountTransitionRef.current = false;
