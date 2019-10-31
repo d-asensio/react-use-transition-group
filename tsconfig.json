@@ -62,7 +62,8 @@
   },
   "exclude": [
     "node_modules",
-    "lib",
+    "build",
+    "src/**/*.test.ts",
     "**/__stories__/**/*"
   ]
 }
